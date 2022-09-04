@@ -22,24 +22,25 @@
 */
 
 
-//includes SD, SPI, and BME libraries
-#include <SPI.h>  
-#include <SD.h>
+
+#include <Wire.h>
+#include <SPI.h>
 #include <Adafruit_Sensor.h>
 #include "Adafruit_BME680.h"
+#include <SD.h>
+#include <Servo.h>
 
-
-//define SPI pins
-#define SCK 13
-#define MISO 12
-#define MOSI 11
-#define BME_CS 3
+#define BME_SCK 5
+#define BME_SDO 6
+#define BME_SDI 7
+#define BME_CS 10
 #define SD_CS 4
 
 #define SEALEVELPRESSURE_HPA (1013.25)
 
-Adafruit_BME680 bme(BME_CS, MOSI, MISO,  SCK);
+Adafruit_BME680 bme(BME_CS, BME_SDI, BME_SDO,  BME_SCK);
 
+int pos = 0;
 double initAltitude = 0;
 File root;
 
@@ -76,7 +77,7 @@ class SDCard {
       
       // open the file. note that only one file can be open at a time,
       // so you have to close this one before opening another.
-      file = SD.open(dataFile, FILE_WRITE);
+      File file = SD.open("hello.txt", FILE_WRITE);
     
       // if the file is available, write to it:
       if (!file) {
@@ -87,7 +88,18 @@ class SDCard {
 
     //writes to file SD Card opened
     void sdWrite (String dataString) {
-      file.println(dataString);
+      File file = SD.open("hello.txt", FILE_WRITE);
+      
+      if (file) {
+        file.println(dataString);
+        file.close();
+        // print to the serial port too:
+        Serial.println(dataString);
+      }
+      // if the file isn't open, pop up an error:
+      else {
+        Serial.println("error opening datalog.txt");
+      }
     }
 
     //closes file SD Card was writing to
@@ -114,9 +126,8 @@ class Altimeter {
 
     //puts all altimeter data into altimeterData each time it is called
     String toString () {
-      altimeterData = "Temperature: " + String(bme.temperature) + " *C, " + "Pressure: " + String(bme.pressure / 100.00) + " hPa, " + "Humidity: " + String(bme.humidity)
-      + " %, " + "Gas: " + String(bme.gas_resistance / 100.0) + " KOhms, " + "Approx. Altitude: " + String(bme.readAltitude(SEALEVELPRESSURE_HPA)) + " m"; 
-      return altimeterData;
+      //return ("Temperature: " + String(bme.temperature) + " *C, " + "Pressure: " + String(bme.pressure / 100.00) + " hPa, " + "Humidity: " + String(bme.humidity) + " %, " + "Gas: " + String(bme.gas_resistance / 100.0) + " KOhms, " + "Approx. Altitude: " + String(bme.readAltitude(SEALEVELPRESSURE_HPA)) + " m"); 
+      return String(bme.readAltitude(SEALEVELPRESSURE_HPA));
     }
 
 
@@ -132,13 +143,35 @@ class Altimeter {
     }
 };
 
+Servo myservo;
+
+void sweep () {
+  for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+    // in steps of 1 degree
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15);                       // waits 15 ms for the servo to reach the position
+  }
+  for (pos = 180; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15);                       // waits 15 ms for the servo to reach the position
+  }
+}
+
+SDCard sdcard;
+Altimeter altimeter;
+
 void setup() {
-  // Open serial communications and wait for port to open:
   Serial.begin(9600);
-  while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
+  while (!Serial);
+  Serial.println(F("BME680 test"));
+
+  if (!bme.begin()) {
+    Serial.println("Could not find a valid BME680 sensor, check wiring!");
+    while (1);
   }
 
+  // Set up oversampling and filter initialization
+  bme.setPressureOversampling(BME680_OS_4X);
 
   Serial.print("Initializing SD card...");
 
@@ -150,38 +183,26 @@ void setup() {
   }
   Serial.println("card initialized.");
 
-  while (!Serial);
-  Serial.println(F("BME680 test"));
-
-  if (!bme.begin()) {
-    Serial.println("Could not find a valid BME680 sensor, check wiring!");
-    while (1);
-  }
-
-  // Set up oversampling and filter initialization
-  bme.setTemperatureOversampling(BME680_OS_8X);
-  bme.setHumidityOversampling(BME680_OS_2X);
-  bme.setPressureOversampling(BME680_OS_4X);
-  bme.setIIRFilterSize(BME680_FILTER_SIZE_3);
-  bme.setGasHeater(320, 150); // 320*C for 150 
-
   double sum;
   
-  for (int i = 0; i <= 10; i++) {
+  for (int i = 0; i <= 50; i++) {
     sum += bme.readAltitude(SEALEVELPRESSURE_HPA);
   }
 
-  initAltitude = sum / 11;
+  initAltitude = sum / 51;
 
+  myservo.attach(9);
   
 }
 
-SDCard sdcard;
-Altimeter altimeter;
-
 void loop() {
+//  sdcard.sdWrite(altimeter.toString());
+//  sdcard.closeFile();
+//  Serial.println(altimeter.toString());
+  Serial.println("Abs: " + String(altimeter.getAbsoluteAltitude()));
+  Serial.println("Rel: " + String(altimeter.getRelativeAltitude()));
 
-  sdcard.sdWrite(altimeter.toString());
-  Serial.println(altimeter.toString());
-
+  if(altimeter.getRelativeAltitude() > 0.25) {
+    sweep();
+  }
 }
