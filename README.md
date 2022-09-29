@@ -1,12 +1,12 @@
 # PROXIMA_22-23
 
-PROXIMA Rocketry Club's general repo for the 2022-2023 season:
+PROXIMA Rocketry Club's general repo for anything and everything:
 
 
 * Software for flight computer
 * OpenRocket designs
 * Altitude estimation programs
-
+* Whatever else
 
 
 
