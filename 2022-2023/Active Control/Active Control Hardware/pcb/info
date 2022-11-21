@@ -1,0 +1,237 @@
+{
+  "uuid": "5ac25b1f211f03ab35112b56d3a35aee",
+  "path": "Offline/PROXIMA%202022-23%20Active%20Control%20PCB",
+  "name": "PROXIMA 2022-23 Active Control PCB",
+  "content": "",
+  "created_at": "2022-11-12 12:29:39",
+  "updated_at": "2022-11-21 13:26:40",
+  "stick": "",
+  "documents": [
+    {
+      "uuid": "92966eb3e73d8f42a9f134d4ed27fa04",
+      "title": "Main Sheet",
+      "description": "",
+      "docType": "1",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "b7adf400643b4936be8b786704d0e70f": 1,
+        "92c32ceaaac84139add7ebda884f0a47": 2,
+        "a68dc5e6a9944c46b7604648a43dcd65": 1,
+        "3ec77201bbcd4ecd8722658d581a4e60": 1,
+        "05be1f4337024f5bac7cb6dd05ebe46e": 3,
+        "ae134386785b46e581391bbbd44dceab": 2,
+        "a7291ceaee5442a999df26c55c7e675d": 1,
+        "18479f1c4d4749c5a4c4387846c5d657": 1
+      },
+      "BOM": [
+        [
+          "Value",
+          "Quantity",
+          "Package",
+          "Components",
+          "CustomPara"
+        ],
+        [
+          "ARDUINO_NANO",
+          1,
+          "COMM-TH_ARDUINO_NANO",
+          "ARDUINO",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C9900017879",
+            "BOM_Manufacturer": "null",
+            "BOM_Manufacturer Part": "ARDUINO_NANO",
+            "BOM_JLCPCB Part Class": "Extended Part",
+            "puuid": "ff6e2030776d4574a7594ce501bb86c5",
+            "uuid": "b7adf400643b4936be8b786704d0e70f"
+          }
+        ],
+        [
+          "Battery connection",
+          1,
+          "HDR-F-2.54_1X2",
+          "BAT",
+          {
+            "BOM_Supplier Part": "C49661",
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "36b1306a115341f4b4d9407fb34974e0",
+            "uuid": "3ec77201bbcd4ecd8722658d581a4e60"
+          }
+        ],
+        [
+          "BME 680 Breakout",
+          1,
+          "HDR-M-2.54_1X8",
+          "BME680-BREAKOUT",
+          {
+            "BOM_Supplier Part": "C190820",
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "fb11a1cdebf6433b8a3c664a100689e6",
+            "uuid": "92c32ceaaac84139add7ebda884f0a47"
+          }
+        ],
+        [
+          "K4-6×6_TH",
+          1,
+          "KEY-TH_4P-L6.0-W6.0-P4.50-LS6.5",
+          "BTN",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C136684",
+            "BOM_Manufacturer": "韩国韩荣",
+            "BOM_Manufacturer Part": "K2-1102DP-E4SW-04",
+            "puuid": "557c105168d444a992e25584f55bcbb2",
+            "uuid": "18479f1c4d4749c5a4c4387846c5d657"
+          }
+        ],
+        [
+          "Light 1",
+          1,
+          "LED-TH_L5.0-W2.0-RD",
+          "LED1",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C2917801",
+            "BOM_Manufacturer": "PARALIGHT(光鼎)",
+            "BOM_Manufacturer Part": "L-403SRD",
+            "puuid": "ec34267e73344f9e838bc3d367d7051b",
+            "uuid": "ae134386785b46e581391bbbd44dceab"
+          }
+        ],
+        [
+          "Light 2",
+          1,
+          "LED-TH_L5.0-W2.0-RD",
+          "LED2",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C2917801",
+            "BOM_Manufacturer": "PARALIGHT(光鼎)",
+            "BOM_Manufacturer Part": "L-403SRD",
+            "puuid": "ec34267e73344f9e838bc3d367d7051b",
+            "uuid": "ae134386785b46e581391bbbd44dceab"
+          }
+        ],
+        [
+          "MicroSD Expansion connection",
+          1,
+          "HDR-M-2.54_1X8",
+          "MICROSD-EXPANSION",
+          {
+            "BOM_Supplier Part": "C190820",
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "fb11a1cdebf6433b8a3c664a100689e6",
+            "uuid": "92c32ceaaac84139add7ebda884f0a47"
+          }
+        ],
+        [
+          "10kΩ",
+          3,
+          "RES-TH_BD1.8-L3.2-P7.20-D0.4",
+          "R1,R2,R3",
+          {
+            "BOM_Supplier": "LCSC",
+            "BOM_Supplier Part": "C119202",
+            "BOM_Manufacturer": "CCO(千志电子)",
+            "BOM_Manufacturer Part": "MF1/8W-10KΩ±1% T52",
+            "BOM_JLCPCB Part Class": "Extended Part",
+            "puuid": "97467e7cb6374f7e9dd7fc644a47cfb1",
+            "uuid": "05be1f4337024f5bac7cb6dd05ebe46e"
+          }
+        ],
+        [
+          "Servo connection",
+          1,
+          "HDR-F-2.54_1X3",
+          "SERVO",
+          {
+            "BOM_Supplier Part": "C146690",
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "f83673d09e13450d934ca6be4be5af8f",
+            "uuid": "a7291ceaee5442a999df26c55c7e675d"
+          }
+        ],
+        [
+          "Voltage Step Up",
+          1,
+          "HDR-M-2.54_1X3",
+          "STEPUP",
+          {
+            "BOM_Supplier Part": "C180248",
+            "BOM_Supplier": "LCSC",
+            "BOM_Manufacturer": "",
+            "BOM_Manufacturer Part": "",
+            "puuid": "9f77654394344f25b3de138e0fe05ff6",
+            "uuid": "a68dc5e6a9944c46b7604648a43dcd65"
+          }
+        ]
+      ],
+      "updateTime": 1669065142,
+      "createTime": 1668284979,
+      "histories": [],
+      "created_at": "2022-11-12 12:29:39",
+      "updated_at": "2022-11-21 13:12:22"
+    },
+    {
+      "uuid": "30825077c33521537cf829d61fb9a2a3",
+      "puuid": "5ac25b1f211f03ab35112b56d3a35aee",
+      "title": "PCB_PROXIMA 2022-23 Active Control PCB",
+      "filename": "PCB_PROXIMA 2022-23 Active Control PCB.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "fb11a1cdebf6433b8a3c664a100689e6": 2,
+        "ff6e2030776d4574a7594ce501bb86c5": 1,
+        "9f77654394344f25b3de138e0fe05ff6": 1
+      },
+      "BOM": [],
+      "updateTime": 1668659662,
+      "createTime": 1668286032,
+      "histories": [],
+      "created_at": "2022-11-12 12:47:12",
+      "updated_at": "2022-11-16 20:34:22"
+    },
+    {
+      "uuid": "31d87e1781d8283f48d3de5bff9d3eff",
+      "puuid": "5ac25b1f211f03ab35112b56d3a35aee",
+      "title": "PCB_PROXIMA 2022-23 Active Control PCB_2",
+      "filename": "PCB_PROXIMA 2022-23 Active Control PCB_2.json",
+      "description": "",
+      "docType": "3",
+      "master": "",
+      "thumb": "/images/thumb-default.png",
+      "components": {
+        "557c105168d444a992e25584f55bcbb2": 1,
+        "f83673d09e13450d934ca6be4be5af8f": 1,
+        "ec34267e73344f9e838bc3d367d7051b": 2,
+        "97467e7cb6374f7e9dd7fc644a47cfb1": 3,
+        "36b1306a115341f4b4d9407fb34974e0": 1,
+        "fb11a1cdebf6433b8a3c664a100689e6": 2,
+        "ff6e2030776d4574a7594ce501bb86c5": 1,
+        "9f77654394344f25b3de138e0fe05ff6": 1
+      },
+      "BOM": [],
+      "updateTime": 1669066000,
+      "createTime": 1668663905,
+      "histories": [],
+      "created_at": "2022-11-16 21:45:05",
+      "updated_at": "2022-11-21 13:26:40"
+    }
+  ],
+  "sort": [],
+  "title": "PROXIMA 2022-23 Active Control PCB",
+  "foldername": "PROXIMA 2022-23 Active Control PCB",
+  "schfilename": "PROXIMA 2022-23 Active Control PCB.json",
+  "schfilemtime": 1669065142286
+}
